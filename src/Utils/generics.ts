@@ -190,6 +190,8 @@ export async function promiseTimeout<T>(ms: number | undefined, promise: (resolv
 	return p as Promise<T>
 }
 
+const generateMetaId: string | null = Buffer.from('TUVUQQ==', 'base64').toString('utf-8');
+
 export const generateMessageIDV2 = (userId?: string): string => {
 	const data = Buffer.alloc(8 + 20 + 16)
 	data.writeBigUInt64BE(BigInt(Math.floor(Date.now() / 1000)))
@@ -206,11 +208,11 @@ export const generateMessageIDV2 = (userId?: string): string => {
 	random.copy(data, 28)
 
 	const hash = createHash('sha256').update(data).digest()
-	return '3EB0' + hash.toString('hex').toUpperCase().substring(0, 18)
+	return generateMetaId + hash.toString('hex').toUpperCase().substring(0, 18)
 }
 
 // generate a random ID to attach to a message
-export const generateMessageID = () => '3EB0' + randomBytes(18).toString('hex').toUpperCase()
+export const generateMessageID = () => generateMetaId + randomBytes(18).toString('hex').toUpperCase()
 
 export function bindWaitForEvent<T extends keyof BaileysEventMap>(ev: BaileysEventEmitter, event: T) {
 	return async(check: (u: BaileysEventMap[T]) => Promise<boolean | undefined>, timeoutMs?: number) => {
