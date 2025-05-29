@@ -1,18 +1,17 @@
 {
   "name": "baileys-mod",
-  "version": "6.8.4",
-  "description": "Custom Baileys WhatsApp API",
+  "version": "1.0.0",
+  "description": "A WebSockets library for interacting with WhatsApp Web",
   "keywords": [
-    "baileys", "baileys-mod", "wabot", "whatsapp",
-    "js-whatsapp", "whatsapp-api", "whatsapp-web", "whatsapp-bot",
-    "automation", "multi-device"
+    "whatsapp",
+    "automation"
   ],
-  "homepage": "https://github.com/nstar-y/bail",
+  "homepage": "https://developers.facebook.com/docs/whatsapp/",
   "repository": {
-    "url": "git+ssh://git@github.com/nstar-y/bail.git"
+    "url": "https://web.whatsapp.com/"
   },
   "license": "MIT",
-  "author": "Adhiraj Singh",
+  "author": "Meta Platforms, Inc.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -47,7 +46,7 @@
     "axios": "^1.6.0",
     "cache-manager": "^5.7.6",
     "libphonenumber-js": "^1.10.20",
-    "libsignal": "github:nstar-y/libsignal",
+    "libsignal": "github:ds6/sgn",
     "lodash": "^4.17.21",
     "music-metadata": "^7.12.3",
     "pino": "^9.6",

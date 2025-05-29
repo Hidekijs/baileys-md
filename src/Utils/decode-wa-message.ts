@@ -42,7 +42,8 @@ export function decodeMessageNode(
 
 	const msgId = stanza.attrs.id
 	const from = stanza.attrs.from
-	const participant: string | undefined = stanza.attrs.participant_pn || stanza.attrs.participant
+	const participant: string | undefined = stanza.attrs.participant
+	const phoneNumber: string | undefined = stanza.attrs.participant_pn || participant
 	const recipient: string | undefined = stanza.attrs.recipient
 
 	const isMe = (jid: string) => areJidsSameUser(jid, meId)
@@ -99,7 +100,8 @@ export function decodeMessageNode(
 		fromMe,
 		id: msgId,
 		participant,
-		server_id: stanza.attrs?.server_id
+		phoneNumber,
+		server_id: stanza.attrs?.server_id,
 	}
 
 	const fullMessage: proto.IWebMessageInfo = {
